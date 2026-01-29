@@ -20,6 +20,7 @@ export const createRandomUsers = async () => {
         preferredFirstName: 'su',
         preferredLastName: 'sas',
         id: 'employee',
+        roles: ['admin'],
       },
     ],
   });
