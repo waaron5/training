@@ -11,13 +11,13 @@ model Task {
   id            String    @id @default(cuid())
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt()
-  userId        String
   title         String
   description   String
   status        Status    @default(incomplete)
   completedDate DateTime?
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 enum Status {
