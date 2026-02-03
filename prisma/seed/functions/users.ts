@@ -11,6 +11,7 @@ export const createRandomUsers = async () => {
         preferredFirstName: 'jay',
         preferredLastName: 'stock',
         id: 'student',
+        roles: ['user'],
       },
       {
         accountType: 'Employee',

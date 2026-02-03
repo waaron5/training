@@ -1,1 +1,32 @@
-<p>tasks works!</p>
+<mat-paginator
+  [length]="taskResource.value()?.totalCount"
+  [pageSize]="PAGE_SIZE"
+  (page)="handlePageEvent($event)"
+  [hidePageSize]="true"
+  [showFirstLastButtons]="true" />
+
+<div class="whatever" href="whatever2"></div>
+
+@if (taskResource.error()) {
+  <p>Failed to retrieve tasks. Please try again.</p>
+  <p>{{ taskResource.error()?.message }}</p>
+  <button (click)="taskResource.refresh()">Refresh</button>
+}
+
+@if (taskResource.isLoading()) {
+  <div class="shade">
+    <mat-spinner />
+  </div>
+}
+
+<section>
+  @for (task of taskResource.value()?.data; track task.id) {
+    <app-task-card
+      [initialState]="task"
+      (taskDeleted)="taskDeleted()"></app-task-card>
+  }
+</section>
+
+<button (click)="openCreateDialog()" aria-label="Create task" mat-fab>
+  <mat-icon>add</mat-icon>
+</button>

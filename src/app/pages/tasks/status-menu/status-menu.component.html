@@ -1,0 +1,26 @@
+<button
+  matButton
+  [matMenuTriggerFor]="statusMenu"
+  aria-label="status selector"
+  class="selector-button"
+  [class]="status()"></button>
+<mat-menu #statusMenu="matMenu">
+  <button
+    mat-menu-item
+    (click)="setStatus('complete')"
+    [disabled]="status() === 'complete'">
+    Complete
+  </button>
+  <button
+    mat-menu-item
+    (click)="setStatus('inProgress')"
+    [disabled]="status() === 'inProgress'">
+    In Progress
+  </button>
+  <button
+    mat-menu-item
+    (click)="setStatus('incomplete')"
+    [disabled]="status() === 'incomplete'">
+    Incomplete
+  </button>
+</mat-menu>
